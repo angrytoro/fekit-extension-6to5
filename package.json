@@ -1,0 +1,21 @@
+{
+  "fekit_extension_command_name": "6to5",
+  "name": "fekit-extension-6to5",
+  "version": "0.0.1",
+  "description": "fekit extension to compiler ES6 to ES5",
+  "dependencies": {
+    "chokidar": "^1.0.0-rc5",
+    "coffee-script": "^1.9.1",
+    "traceur": "0.0.87"
+  },
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "cake build",
+    "postinstall": "node ./scripts/postinstall.js",
+    "preuninstall": "node ./scripts/preuninstall.js"
+  },
+  "repository": "git@github.com:angrytoro/fekit-extension-6to5.git",
+  "author": "angrytoro",
+  "license": "BSD",
+  "devDependencies": {}
+}
