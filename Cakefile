@@ -15,6 +15,7 @@ process_stdio = (proc, callback) ->
 build = (option, callback) -> 
 
 	coffee = _spawn path.join('.', 'node_modules', '.bin', 'coffee'), option
+	console.log(path.join('.', 'node_modules', '.bin', 'coffee'));
 	process_stdio coffee, callback
 
 task 'build', 'build coffee-script to javascript', ->
