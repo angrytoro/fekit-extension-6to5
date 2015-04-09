@@ -1,6 +1,7 @@
 path = require 'path'
 chokidar = require 'chokidar'
 {spawn} = require 'child_process'
+babel = require 'babel/register'
 
 watcher = chokidar.watch 'es6', {cwd: '.'}
 
@@ -8,6 +9,8 @@ watcher.on 'all', (event, filepath) ->
 	console.log event, filepath;
 	traceur = _spawn path.join('.', 'node_modules', '.bin', 'traceur'), ['--dir', 'es6', 'src']
 	process_stdio traceur
+	# babel = _spawn path.join('.', 'node_modules', '.bin', 'babel'), ['es6', '--out-dir', 'src']
+	# process_stdio babel
 
 _spawn = (cmd, args = [], options = {}) ->
 	cmd = if process.platform is 'win32' then cmd + '.cmd' else cmd
