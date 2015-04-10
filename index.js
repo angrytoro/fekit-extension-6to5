@@ -10,6 +10,15 @@
 
   babel = require('babel/register');
 
+  exports.usage = '将es6编译成es5';
+
+  exports.set_options = function(optimist) {
+    optimist.alias('g', 'google');
+    optimist.describe('g', '按谷歌的编译方式，将es6编译成es5');
+    optimist.alias('b', 'label');
+    return optimist.describe('b', '按babel的编译方式，将es6编译成es5');
+  };
+
   watcher = chokidar.watch('es6', {
     cwd: '.'
   });
@@ -17,8 +26,10 @@
   watcher.on('all', function(event, filepath) {
     var traceur;
     console.log(event, filepath);
-    traceur = _spawn(path.join('.', 'node_modules', '.bin', 'traceur'), ['--dir', 'es6', 'src']);
-    return process_stdio(traceur);
+    traceur = _spawn(path.join('.', 'node_modules', '.bin', 'traceur'), ['--dir', 'es6', 'gsrc']);
+    process_stdio(traceur);
+    babel = _spawn(path.join('.', 'node_modules', '.bin', 'babel'), ['es6', '--out-dir', 'bsrc']);
+    return process_stdio(babel);
   });
 
   _spawn = function(cmd, args, options) {

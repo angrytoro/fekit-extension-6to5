@@ -18,5 +18,8 @@
   "repository": "git@github.com:angrytoro/fekit-extension-6to5.git",
   "author": "angrytoro",
   "license": "BSD",
-  "devDependencies": {}
+  "devDependencies": {},
+  "peerDependencies": {
+        "fekit": "0.2.x"
+  }
 }
